@@ -1,5 +1,5 @@
 
-(function() {
+
     const myQuestions = [
       {
         question: "Qui a inventé la théorie de la relativité générale (trous de ver) ?",
@@ -30,10 +30,43 @@
           d: "6"
         },
         correctAnswer: "a"
+      },
+      {
+        question: "Maitrisez-vous les gestes de premiers secours ?",
+        answers: {
+          a: "Oui",
+          b: "Non",
+         
+        },
+        correctAnswer: "a"
+      },
+      {
+        question: "Si un problème survenait (quelqu’il soit). Seriez-vous en mesure de garder votre sang-froid ?",
+        answers: {
+          a: "Oui je sais gérer mon stress",
+          b:"Cela depend de la situation",
+          c: "Non je panique à la vue d'une fourmis",
+         
+        },
+        correctAnswer: "a"
+      },
+      {
+        question: "Dans quel domaine travaillez-vous ?",
+        answers: {
+          a: "Scientifique",
+          b: "Agricole",
+          c: "Médical",
+          d: "Ingénierie",
+          e: "Autre",
+
+         
+        },
+        correctAnswer: "b"
       }
+      
     ];
   
-    function buildQuiz() {
+   const buildQuiz=()=> {
       // we'll need a place to store the HTML output
       const output = [];
   
@@ -67,7 +100,7 @@
       quizContainer.innerHTML = output.join("");
     }
   
-    function showResults() {
+    const showResults = () => {
       // gather answer containers from our quiz
       const answerContainers = quizContainer.querySelectorAll(".answers");
   
@@ -99,7 +132,7 @@
       resultsContainer.innerHTML = `${Math.round((numCorrect*100)/myQuestions.length)}% of right answers`;
     }
   
-    function showSlide(n) {
+    const showSlide = (n) => {
       slides[currentSlide].classList.remove("active-slide");
       slides[n].classList.add("active-slide");
       currentSlide = n;
@@ -109,12 +142,17 @@
       if (currentSlide === slides.length - 1) {
         nextButton.style.display = "none";
         submitButton.style.display = "inline-block";
-      } else {
+    
+      } else if(currentSlide <= slides.length-1 ){
         nextButton.style.display = "inline-block";
         submitButton.style.display = "none";
       }
+      else{
+        showResults();
+      }
     }
   
+    // Next question handler
     document.addEventListener('keydown', (e)=>{
 
       console.log('keydown')
@@ -123,24 +161,23 @@
       if(e.keyCode==39){
         showNextSlide()
       }
-      else if(e.keyCode==37){
-        showPreviousSlide()
+      if(currentSlide === slides.length){
+        showResults()
       }
     })
 
-
-    function showNextSlide() {
+    const showNextSlide = ()=> {
       showSlide(currentSlide + 1);
-    
-  
+
   } 
    
   
+  // Get DOM element 
     const quizContainer = document.getElementById("quiz");
     const resultsContainer = document.getElementById("results");
     const submitButton = document.getElementById("submit");
   
-    // display quiz right away
+    // Display quiz right away
     buildQuiz();
   
     const previousButton = document.getElementById("previous");
@@ -150,10 +187,10 @@
   
     showSlide(0);
   
-    // on submit, show results
+    // On submit, show results
     submitButton.addEventListener("click", showResults);
     // previousButton.addEventListener("click", showPreviousSlide);
     nextButton.addEventListener("click", showNextSlide);
-  })();
+  
   
 
