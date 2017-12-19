@@ -104,11 +104,7 @@
       slides[n].classList.add("active-slide");
       currentSlide = n;
       
-      if (currentSlide === 0) {
-        previousButton.style.display = "none";
-      } else {
-        previousButton.style.display = "inline-block";
-      }
+    
       
       if (currentSlide === slides.length - 1) {
         nextButton.style.display = "none";
