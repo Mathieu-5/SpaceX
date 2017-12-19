@@ -1,32 +1,35 @@
+
 (function() {
     const myQuestions = [
       {
-        question: "Who is the strongest?",
+        question: "Qui a inventé la théorie de la relativité générale (trous de ver) ?",
         answers: {
-          a: "Superman",
-          b: "The Terminator",
-          c: "Waluigi, obviously"
+          a: "Einstein",
+          b: "Newton",
+          c: "Galilée",
+          d:"Copernic"
         },
-        correctAnswer: "c"
+        correctAnswer: "a"
       },
       {
-        question: "What is the best site ever created?",
+        question: "En quelle année la premiere exoplanete a-t-elle été découverte ?",
         answers: {
-          a: "SitePoint",
-          b: "Simple Steps Code",
-          c: "Trick question; they're both the best"
+          a: "1992",
+          b: "1995",
+          c: "2000",
+          d: "1990"
         },
-        correctAnswer: "c"
+        correctAnswer: "b"
       },
       {
-        question: "Where is Waldo really?",
+        question: "Combien de planètes gravitent autour du Soleil ?",
         answers: {
-          a: "Antarctica",
-          b: "Exploring the Pacific Ocean",
-          c: "Sitting in a tree",
-          d: "Minding his own business, so stop asking"
+          a: "8",
+          b: "7",
+          c: "9",
+          d: "6"
         },
-        correctAnswer: "d"
+        correctAnswer: "a"
       }
     ];
   
@@ -116,13 +119,26 @@
       }
     }
   
+    document.addEventListener('keydown', (e)=>{
+
+      console.log('keydown')
+      console.log(e.keyCode)
+
+      if(e.keyCode==39){
+        showNextSlide()
+      }
+      else if(e.keyCode==37){
+        showPreviousSlide()
+      }
+    })
+
+
     function showNextSlide() {
       showSlide(currentSlide + 1);
-    }
+    
   
-    function showPreviousSlide() {
-      showSlide(currentSlide - 1);
-    }
+  } 
+   
   
     const quizContainer = document.getElementById("quiz");
     const resultsContainer = document.getElementById("results");
@@ -140,7 +156,8 @@
   
     // on submit, show results
     submitButton.addEventListener("click", showResults);
-    previousButton.addEventListener("click", showPreviousSlide);
+    // previousButton.addEventListener("click", showPreviousSlide);
     nextButton.addEventListener("click", showNextSlide);
   })();
   
+
