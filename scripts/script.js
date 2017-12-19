@@ -96,7 +96,7 @@
       });
   
       // show number of correct answers out of total
-      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+      resultsContainer.innerHTML = `${Math.round((numCorrect*100)/myQuestions.length)}% of right answers`;
     }
   
     function showSlide(n) {
