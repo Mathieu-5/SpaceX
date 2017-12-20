@@ -115,16 +115,16 @@ const myQuestions = [
     correctAnswer: "d"
   },
   
-];
+]
 
 const buildQuiz = () => {
   // we'll need a place to store the HTML output
-  const output = [];
+  const output = []
 
-  // for each question...
+  // for each question
   myQuestions.forEach((currentQuestion, questionNumber) => {
     // we'll want to store the list of answer choices
-    const answers = [];
+    const answers = []
 
     // and for each available answer...
     for (letter in currentQuestion.answers) {
@@ -135,7 +135,7 @@ const buildQuiz = () => {
             ${letter} :
             ${currentQuestion.answers[letter]}
          </label>`
-      );
+      )
     }
 
     // add this question and its answers to the output
@@ -144,65 +144,71 @@ const buildQuiz = () => {
          <div class="question"> ${currentQuestion.question} </div>
          <div class="answers"> ${answers.join("")} </div>
        </div>`
-    );
-  });
+    )
+  })
 
   // finally combine our output list into one string of HTML and put it on the page
-  quizContainer.innerHTML = output.join("");
+  quizContainer.innerHTML = output.join("")
 }
 
 const showResults = () => {
   // gather answer containers from our quiz
-  const answerContainers = quizContainer.querySelectorAll(".answers");
+  const answerContainers = quizContainer.querySelectorAll(".answers")
 
   // keep track of user's answers
-  let numCorrect = 0;
+  let numCorrect = 0
 
   // for each question...
   myQuestions.forEach((currentQuestion, questionNumber) => {
     // find selected answer
-    const answerContainer = answerContainers[questionNumber];
-    const selector = `input[name=question${questionNumber}]:checked`;
-    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+    const answerContainer = answerContainers[questionNumber]
+    const selector = `input[name=question${questionNumber}]:checked`
+    const userAnswer = (answerContainer.querySelector(selector) || {}).value
 
     // if answer is correct
     if (userAnswer === currentQuestion.correctAnswer) {
       // add to the number of correct answers
-      numCorrect++;
+      numCorrect++
 
       // color the answers green
-      answerContainers[questionNumber].style.color = "lightgreen";
+      answerContainers[questionNumber].style.color = "lightgreen"
     } else {
       // if answer is wrong or blank
       // color the answers red
-      answerContainers[questionNumber].style.color = "red";
+      answerContainers[questionNumber].style.color = "red"
     }
-  });
+  })
 
   // show number of correct answers out of total
   resultsContainer.innerHTML = `${Math.round((numCorrect*100)/myQuestions.length)}% of right answers`;
 }
 
+// showslide by swaping active class
 const showSlide = (n) => {
-  slides[currentSlide].classList.remove("active-slide");
-  slides[n].classList.add("active-slide");
-  currentSlide = n;
-  
+  slides[currentSlide].classList.remove("active-slide")
+  slides[n].classList.add("active-slide")
+  currentSlide = n
 
-  
+  // if  last slide is shown display submit button
   if (currentSlide === slides.length - 1) {
     nextButton.style.display = "none";
-    submitButton.style.display = "inline-block";
+    submitButton.style.display = "inline-block"
 
+
+    // else if not display next button
   } else if(currentSlide <= slides.length-1 ){
-    nextButton.style.display = "inline-block";
-    submitButton.style.display = "none";
+    nextButton.style.display = "inline-block"
+    submitButton.style.display = "none"
   }
   else{
-    showResults();
+    showResults()
   }
 }
+// increment current slide
+const showNextSlide = ()=> {
+  showSlide(currentSlide+1)
 
+} 
 // Next question handler
 document.addEventListener('keydown', (e)=>{
 
@@ -211,33 +217,32 @@ document.addEventListener('keydown', (e)=>{
 
   if(e.keyCode==39){
     showNextSlide()
-  }
-  
+  } 
 })
 
-const showNextSlide = ()=> {
-  showSlide(currentSlide + 1);
-
-} 
-
-
 // Get DOM element 
-const quizContainer = document.getElementById("quiz");
-const resultsContainer = document.getElementById("results");
-const submitButton = document.getElementById("submit");
+const quizContainer = document.getElementById("quiz")
+const resultsContainer = document.getElementById("results")
+const submitButton = document.getElementById("submit")
 
 // Display quiz right away
-buildQuiz();
+buildQuiz()
 
+// Get DOM element
+const nextButton = document.getElementById("next")
+const slides = document.querySelectorAll(".slide")
+let currentSlide = 0
 
-const nextButton = document.getElementById("next");
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
-
-showSlide(0);
+// start by showing first slide
+showSlide(0)
 
 // On submit, show results
-submitButton.addEventListener("click", showResults);
-nextButton.addEventListener("click", showNextSlide);
+submitButton.addEventListener("click", showResults)
+nextButton.addEventListener("click", showNextSlide)
+
+
+// ANIMATION
+const question = document.querySelector('.question') 
+TweenLite.from(question, 1, {opacity:0, left:"600px"})
 
 
