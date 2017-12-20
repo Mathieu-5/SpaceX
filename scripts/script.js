@@ -245,4 +245,8 @@ nextButton.addEventListener("click", showNextSlide)
 const question = document.querySelector('.question') 
 TweenLite.from(question, 1, {opacity:0, left:"600px"})
 
+// Easing Body + Logo
+TweenMax.from(".logo", 1,{opacity:0})
+TweenMax.from("body", 1,{opacity:0})
+
 

@@ -17,6 +17,10 @@ body{
   background-repeat:no-repeat; 
 }
 
+.logo{
+  width: 30%;
+}
+
 .bg-opacity{
   background:rgba(0,0,0,0.7);
   width: 100%;
