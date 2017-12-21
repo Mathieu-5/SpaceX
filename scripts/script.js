@@ -120,23 +120,20 @@ const myQuestions = [
 const buildQuiz = () => {
   // we'll need a place to store the HTML output
   const output = []
-
   // for each question
   myQuestions.forEach((currentQuestion, questionNumber) => {
-    // we'll want to store the list of answer choices
+    //  to store the list of answer choices
     const answers = []
-
-    // and for each available answer...
+    //  for each available answer
     for (letter in currentQuestion.answers) {
-      // ...add an HTML radio button
+      // add an HTML radio button
       answers.push(
         `<label>
            <input type="radio" name="question${questionNumber}" value="${letter}">
             ${letter} :
             ${currentQuestion.answers[letter]}
          </label>`
-      )
-    }
+      )}
 
     // add this question and its answers to the output
     output.push(
@@ -154,7 +151,6 @@ const buildQuiz = () => {
 const showResults = () => {
   // gather answer containers from our quiz
   const answerContainers = quizContainer.querySelectorAll(".answers")
-
   // keep track of user's answers
   let numCorrect = 0
 
@@ -207,16 +203,17 @@ const showSlide = (n) => {
 // increment current slide
 const showNextSlide = ()=> {
   showSlide(currentSlide+1)
-
 } 
 // Next question handler
-document.addEventListener('keydown', (e)=>{
+document.addEventListener('keydown', (e) => {
 
   console.log('keydown')
   console.log(e.keyCode)
 
   if(e.keyCode==39){
     showNextSlide()
+        
+    // TweenMax.to(slide, 0.5, {opacity:0})
   } 
 })
 
@@ -242,8 +239,6 @@ nextButton.addEventListener("click", showNextSlide)
 
 
 // ANIMATION
-const question = document.querySelector('.question') 
-TweenLite.from(question, 1, {opacity:0, left:"600px"})
 
 // Easing Body + Logo
 TweenMax.from(".logo", 1,{opacity:0})
