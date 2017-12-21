@@ -1,39 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles/style.css">
-  <meta name="author" content="Mathieu Parisot">
-  <meta name="description" content="SpaceX">
-  <title>SpaceX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/style.css">
+    <meta name="author" content="Mathieu Parisot">
+    <meta name="description" content="SpaceX">
+    <title>SpaceX</title>
 </head>
+
 <body>
 
-  
+
     <!-- <canvas id="canvas"></canvas> -->
-    
-    <div class="quiz-container">
-      <div id="quiz"></div>
+
+    <!-- 1st Page -->
+    <div class="page1">
+        <div class="logo">
+                <img src='img/Logo.png' alt="logo spaceX"/>
+        </div>
+        <div class="txt-container">
+                Ideo urbs venerabilis post superbas efferatarum gentium cervices oppressas latasque leges fundamenta libertatis
+                et retinacula sempiterna velut frugi parens et prudens et dives Caesaribus tamquam liberis suis regenda
+                patrimonii iura permisit. Quo cognito Constantius ultra mortalem modum exarsit ac nequo casu idem Gallus
+                de futuris incertus agitare quaedam conducentia saluti suae per itinera conaretur, remoti sunt omnes
+                de industria milites agentes in civitatibus perviis.
+        </div>
+            <div class="h1-container">
+                <h1>Are you ready to go to Mars?</h1>
+            </div>
+        <div class="btn-skip">
+            <a href="#" alt="skip">Yes</a>
+        </div>
+    </div>
+
+    <!-- 2nd Page -->
+    <div class="page2">
+        <div class="quiz-container">
+            <div id="quiz"></div>
+        </div>
+        <div class="bg-opacity">
+            <div class="logo">
+            <img src="img/logo.png" alt="logo"/>
+            </div>
+                <div id="space">
+                    <div class="stars"></div>
+                    <div class="stars"></div>
+                    <div class="stars"></div>
+                    <div class="stars"></div>
+                    <div class="stars"></div>
+                </div>
+                <div class="buttons">
+                    <button id="next">Next Question</button>
+                    <button id="submit">Submit Quiz</button>
+                </div>
+            <div id="results"></div>
+        </div>
     </div>
     
-    
-    <div class="bg-opacity"> 
-        <img class="logo" src="./img/logo.png"></img>
-        <h1>Board into SpaceX flight</h1>
-    <div id="space">
-        <div class="stars"></div>
-        <div class="stars"></div>
-        <div class="stars"></div>
-        <div class="stars"></div>
-        <div class="stars"></div>
-    </div>
-    <button id="next">Next Question</button>
-    <button id="submit">Submit Quiz</button>
-    <div id="results"></div>
-    </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
-<script src="scripts/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>

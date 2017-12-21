@@ -1,3 +1,14 @@
+/**********************How to change pages */
+
+const $page1 = document.querySelector('.page1')
+const $page2 = document.querySelector('.page2')
+const $btnSkip = $page1.querySelector('.btn-skip')
+
+$btnSkip.addEventListener('click', () => {
+  $page1.style.display = 'none'
+  $page2.style.display = 'block'
+})
+
 const myQuestions = [
   {
     question: "Qui a inventé la théorie de la relativité générale (trous de ver) ?",
